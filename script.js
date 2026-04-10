@@ -1,5 +1,5 @@
 /* =============================================
-   YOLY ESTÉTICA — Main Script
+   YOLY ESTETICA SALON & SPA — Main Script
    ============================================= */
 
 'use strict';
@@ -125,32 +125,40 @@ if (form) {
 
     try {
       /* ---------------------------------------------------------
-         OPTION A: Formspree (recommended — see README)
-         Replace YOUR_FORM_ID with your Formspree form ID.
-         Sign up free at https://formspree.io
+         Web3Forms — https://web3forms.com
+         The access_key is set as a hidden input in the HTML form.
+         To activate: replace YOUR_WEB3FORMS_ACCESS_KEY in index.html
+         with the key you receive after signing up at web3forms.com.
          --------------------------------------------------------- */
-      const formspreeId = 'YOUR_FORM_ID'; // ← replace this
+      const accessKey = form.querySelector('[name="access_key"]')?.value;
 
-      if (formspreeId === 'YOUR_FORM_ID') {
-        // Demo mode — simulate success after 1s
-        await new Promise(r => setTimeout(r, 1000));
+      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        // Demo mode — no key set yet, simulate success
+        await new Promise(r => setTimeout(r, 900));
+        showSuccess('¡Mensaje enviado! Te contactaremos pronto. 🌸');
+        form.reset();
+        return;
+      }
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+
+      if (res.ok && json.success) {
         showSuccess('¡Mensaje enviado! Te contactaremos pronto. 🌸');
         form.reset();
       } else {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form),
-        });
-
-        if (res.ok) {
-          showSuccess('¡Mensaje enviado! Te contactaremos pronto. 🌸');
-          form.reset();
-        } else {
-          const data = await res.json();
-          const msg = data?.errors?.map(err => err.message).join(', ') || 'Error al enviar.';
-          showFormError(`Hubo un problema: ${msg}`);
-        }
+        showFormError(json.message || 'Hubo un problema al enviar. Intenta de nuevo.');
       }
     } catch {
       showFormError('Error de red. Por favor intenta de nuevo o escríbenos por WhatsApp.');

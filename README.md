@@ -29,17 +29,18 @@ If you have a domain (e.g. `yolyestetica.com`):
 
 ---
 
-## Contact form setup (Formspree — Free tier available)
+## Contact form setup (Web3Forms — Free, 250/month)
 
-The contact form is wired for [Formspree](https://formspree.io):
+The contact form uses [Web3Forms](https://web3forms.com):
 
-1. Sign up at https://formspree.io (free for up to 50 submissions/month).
-2. Create a new form — copy your **Form ID** (looks like `xpwzqabc`).
-3. Open `script.js` and replace `'YOUR_FORM_ID'` with your actual ID:
-   ```js
-   const formspreeId = 'xpwzqabc';
+1. Go to https://web3forms.com and click **"Get your Access Key"**.
+2. Enter your email — they'll send your key instantly (no credit card needed).
+3. Open `index.html` and find this line:
+   ```html
+   <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
    ```
-4. Done — form submissions will go to your email.
+4. Replace `YOUR_WEB3FORMS_ACCESS_KEY` with your actual key.
+5. Done — submissions go straight to your email, with spam filtering included.
 
 ---
 
@@ -50,7 +51,7 @@ The contact form is wired for [Formspree](https://formspree.io):
 - [ ] Update Instagram / Facebook / WhatsApp links (search for `yolyestetica` and your phone number)
 - [ ] Update the Google Maps embed URL with the real salon location
 - [ ] Update services and prices
-- [ ] Set up Formspree and replace `YOUR_FORM_ID`
+- [ ] Set up Web3Forms and replace `YOUR_WEB3FORMS_ACCESS_KEY` in `index.html`
 - [ ] Enable GitHub Pages in repo settings
 
 ---
