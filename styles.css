@@ -34,7 +34,7 @@
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.22);
 
   --transition: 0.25s ease;
-  --nav-height: 70px;
+  --nav-height: 74px;
 }
 
 /* ---- Reset / Base ---- */
@@ -168,7 +168,7 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   gap: 0.6rem;
 }
 .nav-logo img {
-  height: 44px;
+  height: 58px;
   width: auto;
   object-fit: contain;
 }
@@ -246,16 +246,17 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(ellipse at 15% 60%, rgba(232, 0, 122, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 30%, rgba(0, 170, 221, 0.25) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, rgba(245, 200, 0, 0.12) 0%, transparent 45%);
+    radial-gradient(ellipse at 10% 70%, rgba(232, 0, 122, 0.55) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 25%, rgba(0, 170, 221, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 55% 95%, rgba(245, 200, 0, 0.2) 0%, transparent 40%);
   pointer-events: none;
 }
 
+/* Removed old plum overlay — replaced with transparent so brand glows show */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(74, 44, 44, 0.35);
+  background: transparent;
 }
 
 /* If you add a hero background image, uncomment below and set the path:
