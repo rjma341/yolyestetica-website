@@ -739,6 +739,52 @@ blockquote {
   border: 1px solid #f5c6cb;
 }
 
+/* Booking Banner */
+.booking-banner {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  padding: 4rem 0;
+}
+
+.booking-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.booking-banner-text h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.booking-banner-text p {
+  color: rgba(255,255,255,0.85);
+  max-width: 480px;
+  font-size: 1rem;
+}
+
+.booking-banner-btn {
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.booking-banner-btn:hover {
+  background: var(--color-plum);
+  color: var(--color-white);
+  border-color: var(--color-plum);
+}
+
+@media (max-width: 640px) {
+  .booking-banner-inner { flex-direction: column; text-align: center; }
+  .booking-banner-text p { margin: 0 auto; }
+  .booking-banner-btn { width: 100%; max-width: 300px; justify-content: center; }
+}
+
 /* Map */
 .map-section {
   line-height: 0;

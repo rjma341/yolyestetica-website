@@ -11,14 +11,35 @@ Just open `index.html` in your browser, or use VS Code's Live Server extension.
 
 ---
 
+## Secrets management
+
+API keys and booking URLs are **never stored in the repo**. They live in GitHub repository secrets and are injected at deploy time by GitHub Actions.
+
+**To add/update a secret:**
+1. Go to your repo on GitHub → **Settings** → **Secrets and variables** → **Actions**
+2. Click **New repository secret**
+3. Add these two secrets:
+
+| Secret name | Value |
+|---|---|
+| `WEB3FORMS_KEY` | Your Web3Forms access key (from web3forms.com) |
+| `GOLDIE_BOOKING_URL` | Your Goldie booking URL (from Goldie app → Menu → Online Booking → Share) |
+
+The deploy workflow (`.github/workflows/deploy.yml`) automatically replaces `__WEB3FORMS_KEY__` and `__GOLDIE_BOOKING_URL__` placeholders in `index.html` before publishing.
+
+---
+
 ## Deployment (GitHub Pages — Free)
 
-1. Push all files to the `main` branch of your GitHub repo.
+Deployment is automated via GitHub Actions (`.github/workflows/deploy.yml`). Every push to `main` triggers a deploy.
+
+**One-time setup:**
+1. Add your secrets (see above).
 2. Go to your repo on GitHub → **Settings** → **Pages**.
-3. Under **Source**, select **Deploy from a branch**.
-4. Choose branch: `main`, folder: `/ (root)`.
-5. Click **Save**.
-6. Your site will be live at `https://rjma341.github.io/yolyestetica-website/` within a minute.
+3. Under **Source**, select **GitHub Actions**.
+4. Click **Save**.
+5. Push any change to `main` — the action will build and deploy automatically.
+6. Your site will be live at `https://rjma341.github.io/yolyestetica-website/`
 
 ### Custom domain (optional)
 If you have a domain (e.g. `yolyestetica.com`):
