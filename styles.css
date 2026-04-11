@@ -147,12 +147,8 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   top: 0; left: 0; right: 0;
   height: var(--nav-height);
   z-index: 1000;
-  transition: background var(--transition), box-shadow var(--transition);
-}
-
-.site-header.scrolled {
   background: var(--color-dark);
-  box-shadow: 0 2px 12px rgba(232, 0, 122, 0.2);
+  border-bottom: 1px solid rgba(232, 0, 122, 0.15);
 }
 
 .nav {
@@ -196,10 +192,8 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   color: rgba(255,255,255,0.9);
   transition: color var(--transition), background var(--transition);
 }
-.nav-link:hover { color: var(--color-white); background: rgba(255,255,255,0.1); }
+.nav-link:hover { color: var(--color-accent); background: rgba(255,255,255,0.05); }
 
-.site-header.scrolled .nav-link { color: rgba(255,255,255,0.85); }
-.site-header.scrolled .nav-link:hover { color: var(--color-accent); background: rgba(255,255,255,0.08); }
 
 .nav-cta {
   background: var(--color-primary);
@@ -226,7 +220,6 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
 }
-.site-header.scrolled .nav-toggle span { background: var(--color-plum); }
 
 /* =============================================
    HERO
@@ -240,24 +233,18 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   overflow: hidden;
 }
 
-/* Decorative brand color glow */
+/* Subtle brand color accents at edges */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(ellipse at 10% 70%, rgba(232, 0, 122, 0.55) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 25%, rgba(0, 170, 221, 0.4) 0%, transparent 45%),
-    radial-gradient(ellipse at 55% 95%, rgba(245, 200, 0, 0.2) 0%, transparent 40%);
+    radial-gradient(ellipse at 0% 100%, rgba(232, 0, 122, 0.25) 0%, transparent 40%),
+    radial-gradient(ellipse at 100% 0%, rgba(0, 170, 221, 0.15) 0%, transparent 35%);
   pointer-events: none;
 }
 
-/* Removed old plum overlay — replaced with transparent so brand glows show */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-}
+.hero-overlay { display: none; }
 
 /* If you add a hero background image, uncomment below and set the path:
 .hero {
@@ -471,6 +458,8 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   padding: 6rem 0;
   background: var(--color-white);
 }
+
+.about .section-eyebrow { color: var(--color-primary); }
 
 .about-grid {
   display: grid;

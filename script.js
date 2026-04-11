@@ -8,17 +8,7 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---- Sticky header on scroll ----
 const header = document.getElementById('site-header');
-function handleScroll() {
-  if (window.scrollY > 40) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-}
-window.addEventListener('scroll', handleScroll, { passive: true });
-handleScroll(); // run on load
 
 // ---- Mobile nav toggle ----
 const navToggle = document.getElementById('nav-toggle');
