@@ -29,10 +29,7 @@ jobs:
 
       - name: Inject secrets into HTML
         run: |
-          # Replace placeholder tokens with real secret values from GitHub Secrets.
-          # Add more sed lines here if you add other secrets later.
           sed -i "s|__WEB3FORMS_KEY__|${{ secrets.WEB3FORMS_KEY }}|g" index.html
-          sed -i "s|__GOLDIE_BOOKING_URL__|${{ secrets.GOLDIE_BOOKING_URL }}|g" index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

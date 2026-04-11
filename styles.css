@@ -5,17 +5,17 @@
 
 /* ---- CSS Custom Properties ---- */
 :root {
-  --color-primary:      #E8007A;   /* hot pink / magenta */
-  --color-primary-dark: #bf0063;
-  --color-accent:       #F5C800;   /* yellow */
-  --color-accent-light: #fff7cc;
-  --color-cyan:         #00AADD;   /* cyan blue */
-  --color-dark:         #0D0D0D;   /* near black */
-  --color-dark-2:       #1a1a1a;   /* section alt dark */
+  --color-primary:      #FD3FBF;   /* hot pink from logo */
+  --color-primary-dark:  #d4349f;
+  --color-accent:       #FDE418;   /* yellow from logo */
+  --color-accent-light: #fef9cc;
+  --color-cyan:         #38B1F5;   /* cyan from logo */
+  --color-dark:         #010101;   /* black from logo */
+  --color-dark-2:       #111111;   /* section alt dark */
   --color-light:        #f7f7f7;   /* off-white sections */
-  --color-cream:        #f7f7f7;   /* kept for compat */
+  --color-cream:        #f7f7f7;
   --color-cream-dark:   #eeeeee;
-  --color-plum:         #0D0D0D;   /* kept for compat → now dark */
+  --color-plum:         #010101;
   --color-text:         #1a1a1a;
   --color-text-muted:   #666666;
   --color-white:        #ffffff;
@@ -148,7 +148,14 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   height: var(--nav-height);
   z-index: 1000;
   background: var(--color-dark);
-  border-bottom: 1px solid rgba(232, 0, 122, 0.15);
+  border-bottom: 1px solid rgba(253, 63, 191, 0.1);
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-cyan), var(--color-accent));
 }
 
 .nav {
@@ -233,17 +240,7 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   overflow: hidden;
 }
 
-/* Subtle brand color accents at edges */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse at 0% 100%, rgba(232, 0, 122, 0.25) 0%, transparent 40%),
-    radial-gradient(ellipse at 100% 0%, rgba(0, 170, 221, 0.15) 0%, transparent 35%);
-  pointer-events: none;
-}
-
+.hero::before { display: none; }
 .hero-overlay { display: none; }
 
 /* If you add a hero background image, uncomment below and set the path:
@@ -342,7 +339,7 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
 }
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 40px rgba(232, 0, 122, 0.25);
+  box-shadow: 0 8px 40px rgba(253, 63, 191, 0.2);
   border-color: var(--color-primary);
 }
 
@@ -416,7 +413,7 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(74,44,44,0.7) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 60%);
   display: flex;
   align-items: flex-end;
   padding: 1.25rem;
@@ -716,7 +713,7 @@ blockquote {
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(176, 114, 114, 0.15);
+  box-shadow: 0 0 0 3px rgba(253, 63, 191, 0.15);
 }
 
 .form-group input.error,
@@ -798,7 +795,70 @@ blockquote {
 @media (max-width: 640px) {
   .booking-banner-inner { flex-direction: column; text-align: center; }
   .booking-banner-text p { margin: 0 auto; }
-  .booking-banner-btn { width: 100%; max-width: 300px; justify-content: center; }
+}
+
+.booking-banner .btn-outline {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+.booking-banner .btn-outline:hover {
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* =============================================
+   STATS STRIP
+   ============================================= */
+.stats-strip {
+  background: var(--color-dark);
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(253, 63, 191, 0.15);
+}
+.stats-strip-inner {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.stat-item {
+  text-align: center;
+  color: var(--color-white);
+}
+.stat-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+/* Booking Banner */
+.booking-banner-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .stats-strip-inner { gap: 2rem; }
+  .stat-number { font-size: 1.5rem; }
+  .booking-banner-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  .booking-banner-actions .btn { width: 100%; justify-content: center; }
 }
 
 /* Map */

@@ -23,9 +23,8 @@ API keys and booking URLs are **never stored in the repo**. They live in GitHub 
 | Secret name | Value |
 |---|---|
 | `WEB3FORMS_KEY` | Your Web3Forms access key (from web3forms.com) |
-| `GOLDIE_BOOKING_URL` | Your Goldie booking URL (from Goldie app → Menu → Online Booking → Share) |
 
-The deploy workflow (`.github/workflows/deploy.yml`) automatically replaces `__WEB3FORMS_KEY__` and `__GOLDIE_BOOKING_URL__` placeholders in `index.html` before publishing.
+The deploy workflow (`.github/workflows/deploy.yml`) automatically replaces `__WEB3FORMS_KEY__` in `index.html` before publishing.
 
 ---
 
@@ -67,12 +66,12 @@ The contact form uses [Web3Forms](https://web3forms.com):
 
 ## Customization checklist
 
-- [ ] Replace placeholder text (address, phone, hours, email) in `index.html`
-- [ ] Add real photos to the `images/` folder (see `images/README.md`)
-- [ ] Update Instagram / Facebook / WhatsApp links (search for `yolyestetica` and your phone number)
-- [ ] Update the Google Maps embed URL with the real salon location
-- [ ] Update services and prices
-- [ ] Set up Web3Forms and replace `YOUR_WEB3FORMS_ACCESS_KEY` in `index.html`
+- [x] Set salon address (PR-3 KM 37.2, Luquillo, PR 00773)
+- [x] Configure Google Maps embed for real location
+- [x] Set up WhatsApp/phone contact links
+- [ ] Add real photos to the `images/` folder
+- [ ] Update Facebook / WhatsApp links if phone numbers change
+- [ ] Set up Web3Forms and add `WEB3FORMS_KEY` secret
 - [ ] Enable GitHub Pages in repo settings
 
 ---
