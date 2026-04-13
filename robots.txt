@@ -23,4 +23,4 @@ Allow: /
 User-agent: Googlebot-Image
 Allow: /
 
-Sitemap: https://rjma341.github.io/yolyestetica-website/sitemap.xml
+Sitemap: https://yolyestetica.beauty/sitemap.xml

@@ -3,6 +3,7 @@
 > Professional beauty salon and spa located in Luquillo, Puerto Rico.
 > Owner and lead stylist: Yoly (10+ years of experience).
 > Contact via WhatsApp: +1 (787) 214-0867
+> Machine-readable structured data: https://yolyestetica.beauty/schema.json
 
 ## About
 
