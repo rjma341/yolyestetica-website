@@ -154,6 +154,18 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
 }
 .btn-phone:hover { background: #2a9fd3; border-color: #2a9fd3; }
 
+/* Keep WhatsApp green on the booking banner */
+.booking-banner .btn-wa {
+  background: var(--color-whatsapp);
+  color: var(--color-white);
+  border-color: var(--color-whatsapp);
+}
+.booking-banner .btn-wa:hover {
+  background: #1eb558;
+  border-color: #1eb558;
+  color: var(--color-white);
+}
+
 /* On the pink booking banner, flip to dark for contrast */
 .booking-banner .btn-phone {
   background: var(--color-dark);
