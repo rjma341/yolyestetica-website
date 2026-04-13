@@ -416,6 +416,12 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   color: rgba(255,255,255,0.4);
   font-style: italic;
 }
+.services-note a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.services-note a:hover { color: var(--color-accent); }
 
 /* =============================================
    GALLERY
