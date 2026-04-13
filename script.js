@@ -65,7 +65,7 @@ fadeEls.forEach(el => el.classList.add('fade-in'));
 
 const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         // Stagger siblings
         const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
@@ -96,14 +96,12 @@ if (form) {
 
     // Simple client-side validation
     const name    = form.name.value.trim();
-    const phone   = form.phone.value.trim();
-    const service = form.service.value;
+    const message = form.message.value.trim();
 
     let valid = true;
 
     if (!name) { showError(form.name, 'Por favor ingresa tu nombre.'); valid = false; }
-    if (!phone) { showError(form.phone, 'Por favor ingresa tu teléfono.'); valid = false; }
-    if (!service) { showError(form.service, 'Por favor selecciona un servicio.'); valid = false; }
+    if (!message) { showError(form.message, 'Por favor escribe tu mensaje.'); valid = false; }
 
     if (!valid) return;
 
