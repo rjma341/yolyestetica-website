@@ -1068,9 +1068,10 @@ blockquote {
   }
   .nav-cta {
     text-align: center;
-    margin-top: 0.5rem;
-    background: var(--color-primary) !important;
-    color: var(--color-white) !important;
+    margin-top: 0.25rem;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.85rem;
+    border-radius: var(--radius-sm) !important;
   }
 
   /* Mobile hero */
