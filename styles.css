@@ -395,7 +395,17 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   border-color: var(--color-primary);
 }
 
-.service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.service-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: rgba(253, 63, 191, 0.08);
+  color: var(--color-primary);
+}
 
 .service-card h3 {
   font-family: var(--font-heading);
@@ -586,7 +596,17 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   gap: 1rem;
 }
 
-.value-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.value-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(253, 63, 191, 0.1);
+  color: var(--color-primary);
+}
 
 .value-item strong {
   display: block;
@@ -701,10 +721,24 @@ blockquote {
 }
 
 .contact-icon {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
-  margin-top: 0.1rem;
+  border-radius: 50%;
+  background: rgba(253, 63, 191, 0.08);
+  color: var(--color-primary);
 }
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.footer-contact-item svg { flex-shrink: 0; color: var(--color-primary); }
 
 .contact-details strong {
   display: block;
