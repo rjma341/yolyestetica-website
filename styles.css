@@ -307,6 +307,18 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   margin-bottom: 1rem;
 }
 
+.hero-logo-wrap {
+  margin: 0 auto 1.5rem;
+  line-height: 1;
+}
+.hero-logo-img {
+  display: block;
+  margin: 0 auto;
+  height: clamp(160px, 28vw, 260px);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 24px rgba(253, 63, 191, 0.25));
+}
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(3rem, 8vw, 6rem);
