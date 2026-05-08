@@ -85,78 +85,7 @@ const observer = new IntersectionObserver(
 
 fadeEls.forEach(el => observer.observe(el));
 
-// ---- Contact form handling ----
-const form       = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearErrors();
-
-    // Simple client-side validation
-    const name    = form.name.value.trim();
-    const message = form.message.value.trim();
-
-    let valid = true;
-
-    if (!name) { showError(form.name, 'Por favor ingresa tu nombre.'); valid = false; }
-    if (!message) { showError(form.message, 'Por favor escribe tu mensaje.'); valid = false; }
-
-    if (!valid) return;
-
-    // Submit button loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando…';
-    submitBtn.disabled = true;
-
-    try {
-      /* ---------------------------------------------------------
-         Web3Forms — https://web3forms.com
-         The access_key is set as a hidden input in the HTML form.
-         To activate: replace YOUR_WEB3FORMS_ACCESS_KEY in index.html
-         with the key you receive after signing up at web3forms.com.
-         --------------------------------------------------------- */
-      const accessKey = form.querySelector('[name="access_key"]')?.value;
-
-      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        // Demo mode — no key set yet, simulate success
-        await new Promise(r => setTimeout(r, 900));
-        showSuccess('¡Mensaje enviado! Te contactaremos pronto. 🌸');
-        form.reset();
-        return;
-      }
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const json = await res.json();
-
-      if (res.ok && json.success) {
-        showSuccess('¡Mensaje enviado! Te contactaremos pronto. 🌸');
-        form.reset();
-      } else {
-        showFormError(json.message || 'Hubo un problema al enviar. Intenta de nuevo.');
-      }
-    } catch {
-      showFormError('Error de red. Por favor intenta de nuevo o escríbenos por WhatsApp.');
-    } finally {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-  });
-}
-
+// ---- Form helpers ----
 function showError(el, msg) {
   el.classList.add('error');
   const span = document.createElement('span');
@@ -166,20 +95,105 @@ function showError(el, msg) {
   el.parentElement.appendChild(span);
 }
 
-function clearErrors() {
-  form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-  form.querySelectorAll('.field-error').forEach(el => el.remove());
-  formStatus.className = 'form-status';
-  formStatus.textContent = '';
+function clearFormErrors(formEl, statusEl) {
+  formEl.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+  formEl.querySelectorAll('.field-error').forEach(el => el.remove());
+  statusEl.className = 'form-status';
+  statusEl.textContent = '';
 }
 
-function showSuccess(msg) {
-  formStatus.className = 'form-status success';
-  formStatus.textContent = msg;
-  formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+function showSuccess(statusEl, msg) {
+  statusEl.className = 'form-status success';
+  statusEl.textContent = msg;
+  statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-function showFormError(msg) {
-  formStatus.className = 'form-status error';
-  formStatus.textContent = msg;
+function showFormError(statusEl, msg) {
+  statusEl.className = 'form-status error';
+  statusEl.textContent = msg;
+}
+
+async function submitForm(formEl, statusEl, successMsg) {
+  const submitBtn = formEl.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Enviando…';
+  submitBtn.disabled = true;
+
+  try {
+    const accessKey = formEl.querySelector('[name="access_key"]')?.value;
+
+    if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      await new Promise(r => setTimeout(r, 900));
+      showSuccess(statusEl, successMsg);
+      formEl.reset();
+      return;
+    }
+
+    const formData = new FormData(formEl);
+    const data = Object.fromEntries(formData.entries());
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const json = await res.json();
+
+    if (res.ok && json.success) {
+      showSuccess(statusEl, successMsg);
+      formEl.reset();
+    } else {
+      showFormError(statusEl, json.message || 'Hubo un problema al enviar. Intenta de nuevo.');
+    }
+  } catch {
+    showFormError(statusEl, 'Error de red. Por favor intenta de nuevo o escríbenos por WhatsApp.');
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+}
+
+// ---- Contact form ----
+const form       = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearFormErrors(form, formStatus);
+
+    const name    = form.name.value.trim();
+    const message = form.message.value.trim();
+    let valid = true;
+
+    if (!name)    { showError(form.name,    'Por favor ingresa tu nombre.');   valid = false; }
+    if (!message) { showError(form.message, 'Por favor escribe tu mensaje.');  valid = false; }
+
+    if (!valid) return;
+    await submitForm(form, formStatus, '¡Mensaje enviado! Te contactaremos pronto.');
+  });
+}
+
+// ---- Careers form ----
+const careersForm   = document.getElementById('careers-form');
+const careersStatus = document.getElementById('careers-status');
+
+if (careersForm) {
+  careersForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearFormErrors(careersForm, careersStatus);
+
+    const name    = careersForm.querySelector('[name="name"]').value.trim();
+    const email   = careersForm.querySelector('[name="email"]').value.trim();
+    const message = careersForm.querySelector('[name="message"]').value.trim();
+    let valid = true;
+
+    if (!name)    { showError(careersForm.querySelector('[name="name"]'),    'Por favor ingresa tu nombre.'); valid = false; }
+    if (!email)   { showError(careersForm.querySelector('[name="email"]'),   'Por favor ingresa tu correo.'); valid = false; }
+    if (!message) { showError(careersForm.querySelector('[name="message"]'), 'Por favor cuéntanos sobre ti.'); valid = false; }
+
+    if (!valid) return;
+    await submitForm(careersForm, careersStatus, '¡Aplicación enviada! Nos pondremos en contacto contigo pronto.');
+  });
 }
