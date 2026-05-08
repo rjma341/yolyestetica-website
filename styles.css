@@ -1279,11 +1279,11 @@ blockquote {
     background: rgba(255, 255, 255, 0.06) !important;
   }
   .nav-cta {
-    text-align: center;
+    display: inline-block;
     margin-top: 0.25rem;
-    padding: 0.6rem 1rem !important;
+    padding: 0.45rem 1.25rem !important;
     font-size: 0.85rem;
-    border-radius: var(--radius-sm) !important;
+    border-radius: var(--radius-pill) !important;
   }
 
   /* Mobile hero */
