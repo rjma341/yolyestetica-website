@@ -493,46 +493,98 @@
               recientes.
             </p>
           </div>
-          <div class="gallery-grid">
-            <div class="gallery-item gallery-item--large">
-              <img
-                src="images/gallery-1.jpg"
-                alt="Transformación de color de cabello — de negro a rojo vibrante"
-                loading="lazy"
-              />
-              <div class="gallery-overlay"><span>Color de Cabello</span></div>
+          <div class="gallery-carousel">
+            <button
+              class="carousel-btn carousel-btn--prev"
+              aria-label="Imagen anterior"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            <div class="carousel-track-wrap">
+              <div class="carousel-track">
+                <div class="carousel-slide">
+                  <img
+                    src="images/gallery-1.jpg"
+                    alt="Transformación de cabello — de negro rizado a rojo liso vibrante"
+                    loading="lazy"
+                  />
+                  <div class="gallery-overlay">
+                    <span>Color de Cabello</span>
+                  </div>
+                </div>
+                <div class="carousel-slide">
+                  <img
+                    src="images/gallery-2.jpg"
+                    alt="Arte de uñas — diseño nude con detalles de foil plateado"
+                    loading="lazy"
+                  />
+                  <div class="gallery-overlay"><span>Arte de Uñas</span></div>
+                </div>
+                <div class="carousel-slide">
+                  <img
+                    src="images/gallery-3.jpg"
+                    alt="Uñas de gel — diseño lila con detalles florales"
+                    loading="lazy"
+                  />
+                  <div class="gallery-overlay"><span>Uñas de Gel</span></div>
+                </div>
+                <div class="carousel-slide">
+                  <img
+                    src="images/gallery-5.jpg"
+                    alt="Diseño de cejas — antes y después"
+                    loading="lazy"
+                  />
+                  <div class="gallery-overlay"><span>Cejas</span></div>
+                </div>
+                <div class="carousel-slide">
+                  <img
+                    src="images/gallery-6.jpg"
+                    alt="Interior del salón Yoly Estética — estaciones de cabello"
+                    loading="lazy"
+                  />
+                  <div class="gallery-overlay"><span>El Salón</span></div>
+                </div>
+              </div>
             </div>
-            <div class="gallery-item">
-              <img
-                src="images/gallery-2.jpg"
-                alt="Arte de uñas — diseño nude con detalles de foil plateado"
-                loading="lazy"
-              />
-              <div class="gallery-overlay"><span>Arte de Uñas</span></div>
-            </div>
-            <div class="gallery-item">
-              <img
-                src="images/gallery-3.jpg"
-                alt="Uñas de gel — diseño lila con detalles florales"
-                loading="lazy"
-              />
-              <div class="gallery-overlay"><span>Uñas de Gel</span></div>
-            </div>
-            <div class="gallery-item">
-              <img
-                src="images/gallery-5.jpg"
-                alt="Diseño de cejas — antes y después"
-                loading="lazy"
-              />
-              <div class="gallery-overlay"><span>Cejas</span></div>
-            </div>
-            <div class="gallery-item gallery-item--large">
-              <img
-                src="images/gallery-6.jpg"
-                alt="Interior del salón Yoly Estética — estaciones de cabello"
-                loading="lazy"
-              />
-              <div class="gallery-overlay"><span>El Salón</span></div>
+
+            <button
+              class="carousel-btn carousel-btn--next"
+              aria-label="Imagen siguiente"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+            <div class="carousel-dots">
+              <button class="dot active" aria-label="Imagen 1"></button>
+              <button class="dot" aria-label="Imagen 2"></button>
+              <button class="dot" aria-label="Imagen 3"></button>
+              <button class="dot" aria-label="Imagen 4"></button>
+              <button class="dot" aria-label="Imagen 5"></button>
             </div>
           </div>
           <div class="gallery-cta">

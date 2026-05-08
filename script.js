@@ -58,7 +58,7 @@ window.addEventListener('scroll', setActiveLink, { passive: true });
 
 // ---- Scroll-triggered fade-in animations ----
 const fadeEls = document.querySelectorAll(
-  '.service-card, .gallery-item, .testimonial-card, .about-content, .about-image, .contact-info, .contact-form-wrap'
+  '.service-card, .carousel-slide, .testimonial-card, .about-content, .about-image, .contact-info, .contact-form-wrap'
 );
 
 fadeEls.forEach(el => el.classList.add('fade-in'));
@@ -84,6 +84,35 @@ const observer = new IntersectionObserver(
 );
 
 fadeEls.forEach(el => observer.observe(el));
+
+// ---- Gallery carousel ----
+const galleryCarousel = document.querySelector('.gallery-carousel');
+if (galleryCarousel) {
+  const track    = galleryCarousel.querySelector('.carousel-track');
+  const slides   = galleryCarousel.querySelectorAll('.carousel-slide');
+  const prevBtn  = galleryCarousel.querySelector('.carousel-btn--prev');
+  const nextBtn  = galleryCarousel.querySelector('.carousel-btn--next');
+  const dots     = galleryCarousel.querySelectorAll('.dot');
+  let current = 0;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  // Swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', (e) => {
+    const delta = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 50) goTo(delta > 0 ? current + 1 : current - 1);
+  });
+}
 
 // ---- Form helpers ----
 function showError(el, msg) {
