@@ -327,8 +327,7 @@
             <p class="section-eyebrow">Lo que ofrecemos</p>
             <h2 class="section-title">Nuestros Servicios</h2>
             <p class="section-desc">
-              Cuidamos cada detalle para que te sientas radiante. Todos nuestros
-              servicios están realizados por profesionales certificadas.
+              Cuidamos cada detalle para que te sientas radiante.
             </p>
           </div>
 
@@ -586,7 +585,7 @@
                 ></span>
                 <div>
                   <strong>Profesionalismo</strong>
-                  <p>Técnicas certificadas y productos premium.</p>
+                  <p>Técnicas avanzadas y productos premium.</p>
                 </div>
               </div>
               <div class="value-item">
@@ -1035,101 +1034,16 @@
       </div>
     </main>
 
-    <!-- ===== TRABAJA CON NOSOTROS ===== -->
-    <section class="careers" id="trabaja">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Únete al equipo</p>
-          <h2 class="section-title">Trabaja con nosotros</h2>
-          <p class="section-desc">
-            ¿Eres profesional de la belleza? Nos encantaría conocerte. Completa
-            el formulario y nos pondremos en contacto contigo.
-          </p>
+    <!-- ===== TRABAJA CON NOSOTROS (CTA band) ===== -->
+    <section class="careers-cta" id="trabaja">
+      <div class="container careers-cta-inner">
+        <div class="careers-cta-text">
+          <h2>¿Eres profesional de la belleza?</h2>
+          <p>Únete al equipo de Yoly Estética.</p>
         </div>
-
-        <div class="careers-form-wrap">
-          <form
-            class="contact-form"
-            id="careers-form"
-            method="POST"
-            action="https://api.web3forms.com/submit"
-            novalidate
-          >
-            <input type="hidden" name="access_key" value="__WEB3FORMS_KEY__" />
-            <input
-              type="hidden"
-              name="subject"
-              value="Nueva aplicación de empleo — Yoly Estética"
-            />
-            <input type="hidden" name="redirect" value="false" />
-            <!-- Honeypot — invisible to humans, traps bots -->
-            <input
-              type="checkbox"
-              name="botcheck"
-              style="display: none"
-              tabindex="-1"
-              autocomplete="off"
-            />
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="careers-name">Nombre completo *</label>
-                <input
-                  type="text"
-                  id="careers-name"
-                  name="name"
-                  required
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div class="form-group">
-                <label for="careers-email">Correo electrónico *</label>
-                <input
-                  type="email"
-                  id="careers-email"
-                  name="email"
-                  required
-                  placeholder="tu@correo.com"
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="careers-specialty">Especialidad</label>
-              <input
-                type="text"
-                id="careers-specialty"
-                name="specialty"
-                placeholder="Ej. Estilista, Técnico/a de uñas, Esteticista..."
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="careers-message">Cuéntanos sobre ti *</label>
-              <textarea
-                id="careers-message"
-                name="message"
-                rows="4"
-                required
-                placeholder="Experiencia, certificaciones, disponibilidad..."
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full">
-              Enviar aplicación
-            </button>
-            <p class="form-note">
-              Tu información es confidencial y solo se usará para procesos de
-              selección.
-            </p>
-            <div
-              class="form-status"
-              id="careers-status"
-              role="alert"
-              aria-live="polite"
-            ></div>
-          </form>
-        </div>
+        <button class="btn btn-primary" id="open-careers-modal">
+          Aplicar ahora
+        </button>
       </div>
     </section>
 
@@ -1324,6 +1238,146 @@
         />
       </svg>
     </a>
+
+    <!-- ===== CAREERS MODAL ===== -->
+    <div
+      class="modal-overlay"
+      id="careers-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-careers-title"
+    >
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <p class="section-eyebrow" style="text-align: left">Únete al equipo</p>
+        <h2 id="modal-careers-title" class="modal-title">
+          Trabaja con nosotros
+        </h2>
+        <p class="modal-desc">
+          ¿Eres profesional de la belleza? Cuéntanos sobre ti y te
+          contactaremos.
+        </p>
+
+        <form
+          class="contact-form"
+          id="careers-form"
+          method="POST"
+          action="https://api.web3forms.com/submit"
+          novalidate
+        >
+          <input type="hidden" name="access_key" value="__WEB3FORMS_KEY__" />
+          <input
+            type="hidden"
+            name="subject"
+            value="Nueva aplicación de empleo — Yoly Estética"
+          />
+          <input type="hidden" name="redirect" value="false" />
+          <!-- Honeypot — invisible to humans, traps bots -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            style="display: none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="careers-name">Nombre completo *</label>
+              <input
+                type="text"
+                id="careers-name"
+                name="name"
+                required
+                placeholder="Tu nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="careers-email">Correo electrónico *</label>
+              <input
+                type="email"
+                id="careers-email"
+                name="email"
+                required
+                placeholder="tu@correo.com"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="careers-specialty">Especialidad</label>
+            <input
+              type="text"
+              id="careers-specialty"
+              name="specialty"
+              placeholder="Ej. Estilista, Técnico/a de uñas, Esteticista..."
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="careers-instagram">Instagram</label>
+              <input
+                type="text"
+                id="careers-instagram"
+                name="instagram"
+                placeholder="@tuusuario"
+              />
+            </div>
+            <div class="form-group">
+              <label for="careers-tiktok">TikTok</label>
+              <input
+                type="text"
+                id="careers-tiktok"
+                name="tiktok"
+                placeholder="@tuusuario"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="careers-message">Cuéntanos sobre ti *</label>
+            <textarea
+              id="careers-message"
+              name="message"
+              rows="4"
+              required
+              placeholder="Experiencia, disponibilidad..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Enviar aplicación
+          </button>
+          <p class="form-note">
+            Tu información es confidencial y solo se usará para procesos de
+            selección.
+          </p>
+          <div
+            class="form-status"
+            id="careers-status"
+            role="alert"
+            aria-live="polite"
+          ></div>
+        </form>
+      </div>
+    </div>
 
     <script src="script.js?v=__CACHE_VER__"></script>
   </body>

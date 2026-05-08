@@ -175,6 +175,48 @@ if (form) {
   });
 }
 
+// ---- Careers modal ----
+const careersModal  = document.getElementById('careers-modal');
+const openModalBtn  = document.getElementById('open-careers-modal');
+const closeModalBtn = document.getElementById('modal-close');
+
+function openCareersModal() {
+  careersModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  closeModalBtn.focus();
+}
+
+function closeCareersModal() {
+  careersModal.classList.remove('open');
+  document.body.style.overflow = '';
+  if (openModalBtn) openModalBtn.focus();
+}
+
+if (openModalBtn) openModalBtn.addEventListener('click', openCareersModal);
+if (closeModalBtn) closeModalBtn.addEventListener('click', closeCareersModal);
+
+if (careersModal) {
+  // Close on overlay click (not on modal content click)
+  careersModal.addEventListener('click', (e) => {
+    if (e.target === careersModal) closeCareersModal();
+  });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && careersModal?.classList.contains('open')) {
+    closeCareersModal();
+  }
+});
+
+// Footer / nav links pointing to #trabaja open the modal instead of scrolling
+document.querySelectorAll('a[href="#trabaja"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    openCareersModal();
+  });
+});
+
 // ---- Careers form ----
 const careersForm   = document.getElementById('careers-form');
 const careersStatus = document.getElementById('careers-status');
