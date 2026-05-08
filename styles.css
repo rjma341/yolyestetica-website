@@ -466,7 +466,7 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
 .carousel-track-wrap {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background: #0a0a0a;
+  background: var(--color-light);
 }
 
 .carousel-track {
@@ -488,23 +488,6 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   display: block;
 }
 
-.gallery-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 60%);
-  display: flex;
-  align-items: flex-end;
-  padding: 1.25rem;
-}
-
-.gallery-overlay span {
-  color: var(--color-white);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
-}
 
 .carousel-btn {
   position: absolute;
