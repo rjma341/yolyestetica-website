@@ -277,18 +277,22 @@ input, select, textarea, button { font-family: inherit; font-size: 1rem; }
   display: flex;
   align-items: center;
   background: var(--color-dark);
-  overflow: hidden;
-}
-
-.hero::before { display: none; }
-.hero-overlay { display: none; }
-
-/* If you add a hero background image, uncomment below and set the path:
-.hero {
   background-image: url('images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
-} */
+  overflow: hidden;
+}
+
+/* Dark overlay so text stays readable over the photo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 1, 1, 0.62);
+  z-index: 0;
+}
+
+.hero-overlay { display: none; }
 
 .hero-content {
   position: relative;
